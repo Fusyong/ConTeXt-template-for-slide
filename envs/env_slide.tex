@@ -2,6 +2,20 @@
 \startenvironment % 与第一行代码间必须有空行 BUG
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 模式
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 高亮当前步骤（默认为隐藏后续步骤）
+\definemode[highlightcurrentstep]
+% \enablemode[highlightcurrentstep]
+\disablemode[highlightcurrentstep]
+
+% 在分步中（条件判断用）
+\definemode[insteps]
+% \enablemode[insteps]
+\disablemode[insteps]
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 中文配置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mainlanguage[cn]
@@ -9,13 +23,8 @@
 \setscript[hanzi] % 汉字处理脚本（断行等）
 \setupalign[hanging,hz] %行末标点悬挂
 
-% 模式
-% 在分步中
-\definemode[insteps]
-% \enablemode[insteps]
-\disablemode[insteps]
-
 % 页面和用纸的尺寸
+\setuppapersize[SW][SW]
 \setuppapersize[S6][S6]
 % [S3] [width=300pt,height=225pt]
 % [S4] [width=400pt,height=300pt]
@@ -45,6 +54,8 @@
 % \setupcolors[state=start]
 \usecolors[crayola]%使用颜色集合
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
+% \definecolor[highlightColor][BlueI] % 高亮色（显示当前步骤）
+\definecolor[highlightColor][white] % 高亮色（显示当前步骤）
 
 % 字体配置
 \setupbodyfont   [student,tt,16pt]
@@ -72,12 +83,17 @@
 
 % 分步显示（未到达的步骤先占位、隐藏）
 \definecounter[recursenum][way=bytext]
-\setnumber[recursenum][1]
+% \setnumber[recursenum][1]
 \definecounter[currentstepnum][way=bytext]
-\setnumber[currentstepnum][1]
+% \setnumber[currentstepnum][1]
 \def\step[#1]#2{%
-    \ifnum #1>\rawcountervalue[currentstepnum] \color[transparentColor]{#2} \else #2 \fi%
-    \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%
+    \doifmodeelse{highlightcurrentstep}
+    {\ifnum \rawcountervalue[currentstepnum]=1 \color[transparentColor]{#2} \else%
+        \ifnum #1=\rawcountervalue[currentstepnum]\color[highlightColor]{#2} \else #2 \fi%
+    \fi}%
+    {\ifnum #1>\rawcountervalue[currentstepnum]\color[transparentColor]{#2} \else #2 \fi}%
+    % 
+    \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
     }
 
 % 幻灯片环境
@@ -85,9 +101,13 @@
 [commands={\switchtobodyfont[24pt]},
 before={\startmakeup[slidepage]},
 after={\stopmakeup}]
-\def\slide#1{\startSlide #1 \stopSlide%
+\def\slide#1{%
+    \setnumber[recursenum][1]%
+    \setnumber[currentstepnum][1]%
+    \startSlide #1 \stopSlide%
     \decrementcounter[recursenum]%
     \incrementcounter[currentstepnum]%
+    % 
     \enablemode[insteps]%
     \dorecurse{\rawcountervalue[recursenum]}{%
         \startSlide #1 \stopSlide%
