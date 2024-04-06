@@ -1,6 +1,9 @@
 \environment[envs/type-imp-student.mkiv]
 \environment[envs/env_slide.tex]
 
+% 高亮当前步骤（默认为隐藏后续步骤）
+\enablemode[highlightcurrentstep]
+
 %
 %
 %
