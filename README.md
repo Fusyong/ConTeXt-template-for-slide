@@ -4,21 +4,27 @@ ConTeXt幻灯片模板
 
 ## 用法
 
-* 说明见文件环境文件env_slide.tex和示例文件slide.lmtx（注释有待完善）
-* 编译：`context slide.lmtx`
+* 参考下面的done条，以及说明见环境文件env_slide.tex和示例文件slide.lmtx
+* 编译：`>context slide.lmtx`
 
-## bug and TODO
+## done, TODO & bug 
 
-* [x] 分步演示（自动生成每个步骤的页面）
-  * [x] 保持所有元素占位，仅通过显隐或高亮来切换
-    * [x] 隐藏后续步骤模式
-    * [x] 高亮当前步骤模式（第一面隐藏所有步骤）
-  * [x] 呈现实际占位，即通过排版与否来切换
-    * [x] 仅在预定步骤排入
-    * [x] 在预定步骤以后所有步骤排入
-    * [x] 希望新排入的内容不影响其他元素的位置，可在空白处如行末使用0尺寸的盒子，比如`\hbox to 0pt{something}`，或用已经定义好的`\note{something}`
+* [x] `\slide{content by steps}`分步演示的幻灯片环境（自动生成每个步骤的独立页面）
+  * [x] `\step[n]{content}`保持内容占位，在步骤切换时仅显隐或高亮内容
+    * [x] 显示以前步骤，隐藏后续步骤（默认模式）
+    * [x] 高亮当前步骤模式（`\enablemode[highlightcurrentstep] ... \disablemode[highlightcurrentstep]`）
+  * [x] 不预先占位，在步骤切换时确定是否排入
+    * [x] `\onstep[n]{content}`仅在预定步骤排入
+      * [x] `\noteonstep[n]{content}`无宽度（不影响对齐）的单行小字注释，适用于行末
+    * [x] `\fromstep[n]{content}`在预定步骤以后所有步骤排入
+      * [x] `\notefromstep[n]{content}`
+* [x] 预制样式
+  * [x] `\sChapter{content}` 标题
+  * [x] `\sTitle{content}` 不编号标题（不列入目录）
+  * [x] `\sItems{content}` 列表
+  * [x] `\sPar{content}` 段落
 * [ ] 添加手稿模式，可打印成讲义
 * [ ] 跳转和回跳示例
 * [ ] 多媒体嵌入
 * [ ] 进度条
-* [ ] 最后一两张的页面布局可能有误（出现页码）
+* [ ] 最后一两张的页面布局可能有误（出现页码，可能是装饰页设置有误）

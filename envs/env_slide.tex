@@ -54,19 +54,19 @@
 
 % 颜色设置
 % \setupcolors[state=start]
-\usecolors[crayola]%使用颜色集合
+\usecolors[crayola]%使用颜色集合，色标见：https://wiki.contextgarden.net/Color
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 % \definecolor[highlightColor][BlueI] % 高亮色（显示当前步骤）
 \definecolor[highlightColor][white] % 高亮色（显示当前步骤）
 
 % 背景颜色
-\setupbackgrounds[page][background=color,backgroundcolor=LightChromeGreen]
+\setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
     % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
 % \startcolor[OuterSpace]
 % \startcolor[white]
 
 % 页码
-% \setuppagenumber[state=start]
+% \setuppagenumber[state=stop]
 \setuppagenumbering[location={footer,right}]
 % \setuptolerance[verytolerant,stretch] 
 \setupinteractionscreen[option=max]
@@ -167,7 +167,8 @@ after={\stopmakeup}]
     \disablemode[insteps]%
 }
 
-% 不计宽度（不影响对齐）的小字注释
-\def\note#1{\hbox to 0pt{\itxx #1}}
+% 无宽度（不影响对齐）的单行小字注释，适用于行末
+\def\noteonstep[#1]#2{\onstep[#1]{\hbox to 0pt{\itxx #2}}}
+\def\notefromstep[#1]#2{\fromstep[#1]{\hbox to 0pt{\itxx #2}}}
 
 \stopenvironment
