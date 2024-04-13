@@ -32,10 +32,10 @@
 \slide{%
 \sChapter{卡片一点儿用也没有吗？}
 \sItems[fit]{
-    \step[2]{\item 用来复习\fromstep [2]{\hbox to 0pt{\itxx 而不是用来学习！}}}
-    \step[3]{\item 用来游戏\onstep   [3]{\hbox to 0pt{\itxx 请尽情发挥你的想象力！}}}
-    \step[4]{\item 兴趣卡片\fromstep[4]{\hbox to 0pt{\itxx 约有三百字适合，多了无用}}}
-    \step[5]{\item 用来检验\onstep   [5]{\hbox to 0pt{\itxx 谨慎使用！}}}
+    \step[2]{\item 用来复习\fromstep [2]{\note{而不是用来学习！}}}
+    \step[3]{\item 用来游戏\onstep   [3]{\note{请尽情发挥你的想象力！}}}
+    \step[4]{\item 兴趣卡片\fromstep[4]{\note{约有三百字适合，多了无用}}}
+    \step[5]{\item 用来检验\onstep   [5]{\note{谨慎使用！}}}
 }}
 
 \slide{%

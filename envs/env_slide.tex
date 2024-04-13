@@ -109,14 +109,15 @@
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 标题
 \def\sTitle#1{\title{\tfb #1}}
-\def\sChapter#1{\doifmodeelse{insteps}
+\def\sChapter#1{\doifmodeelse{insteps}%
     {\sTitle{#1}}% 无序号标题（不上目录）
     {\chapter{\tfb #1}}}% 有序号标题（上目录）
 
 % 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
 \setupitemgroup[itemize][each][packed][before={}, after={},]
+% 可控制宽度的列表组
 \def\sItems[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off]{\startitemize[packed] #2 \stopitemize}}}
-\def\sPar[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off,indenting={}]{#2}}}
+\def\sPar[#1]#2{\centeraligned{\framedtext[before=,after=,offset=0pt,width=#1,frame=off,indenting={}]{#2}}}
 
 % 分步显示（保持所有元素占位，仅通过显隐或高亮来切换）
 \definecounter[recursenum][way=bytext]
@@ -124,7 +125,7 @@
 \definecounter[currentstepnum][way=bytext]
 % \setnumber[currentstepnum][1]
 \def\step[#1]#2{%
-    \doifmodeelse{highlightcurrentstep}
+    \doifmodeelse{highlightcurrentstep}%
     {\ifnum \rawcountervalue[currentstepnum]=1 \color[transparentColor]{#2} \else%
         \ifnum #1=\rawcountervalue[currentstepnum]\color[highlightColor]{#2} \else #2 \fi%
     \fi}%
@@ -135,7 +136,7 @@
 
 % 仅在预定预定步骤排印
 \def\onstep[#1]#2{%
-    \ifnum #1=\rawcountervalue[currentstepnum] #2\fi%
+    \ifnum #1=\rawcountervalue[currentstepnum]#2\fi%
     \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
     }
 
@@ -165,5 +166,8 @@ after={\stopmakeup}]
     \setnumber[currentstepnum][1]%
     \disablemode[insteps]%
 }
+
+% 不计宽度（不影响对齐）的小字注释
+\def\note#1{\hbox to 0pt{\itxx #1}}
 
 \stopenvironment
