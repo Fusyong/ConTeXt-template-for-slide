@@ -2,7 +2,7 @@
 \startenvironment % 与第一行代码间必须有空行 BUG
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 模式
+% 模式设置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % 显示所有步骤，高亮当前步骤（默认为显示以前步骤，隐藏后续步骤）
@@ -16,8 +16,9 @@
 \disablemode[insteps]
 
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 中文配置
+% 配置
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 中文配置
 \mainlanguage[cn]
 \language[cn]
 \setscript[hanzi] % 汉字处理脚本（断行等）
@@ -51,16 +52,27 @@
     location=singlesided]
 \setupmakeup[slidepage][doublesided=empty, pagestate=start, align=middle, page={disable,no}]
 
+% 颜色设置
 % \setupcolors[state=start]
 \usecolors[crayola]%使用颜色集合
 \definecolor[transparentColor][k=0,t=0,a=1] % 透明色（就地隐藏文本用）
 % \definecolor[highlightColor][BlueI] % 高亮色（显示当前步骤）
 \definecolor[highlightColor][white] % 高亮色（显示当前步骤）
 
-% 字体配置
-\setupbodyfont   [student,tt,16pt]
-\setupindenting[no]
+% 背景颜色
+\setupbackgrounds[page][background=color,backgroundcolor=LightChromeGreen]
+    % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
+% \startcolor[OuterSpace]
+% \startcolor[white]
 
+% 页码
+% \setuppagenumber[state=start]
+\setuppagenumbering[location={footer,right}]
+% \setuptolerance[verytolerant,stretch] 
+\setupinteractionscreen[option=max]
+
+
+% 标题设置
 \setupheads[chapter][
     before=,
     after=,
@@ -70,6 +82,31 @@
     ]
 \setuplabeltext[cn][chapter={{},{、}}] % 前后标签
 
+\setupindenting[no]
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 交互配置：目录、PDF书签、交互、引用
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setupheadtext[content=目录]
+\setupcombinedlist[content][list={DANYUAN,KEWEN,lanmuN},alternative=c]%
+\setuplist[DANYUAN][style=bold]
+\setuplist[KEWEN][margin=2em]
+% pdf交互/链接
+\setupinteraction[state=start,color=,]
+% pdf书签
+% \setupinteractionscreen[option={bookmark}]
+\setupinteractionscreen[
+    option={doublesided,bookmark},
+    width=max,height=max,% necessary for Trim/BleedBox
+]
+\placebookmarks[DANYUAN,KEWEN,lanmuN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
+% 设置引用
+% \setupreferencing[left=,right=] % 覆盖左右两侧的引号
+% \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 定义排版命令
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 标题
 \def\sTitle#1{\title{\tfb #1}}
 \def\sChapter#1{\doifmodeelse{insteps}
@@ -97,13 +134,13 @@
     }
 
 % 仅在预定预定步骤排印
-\def\typesetinstep[#1]#2{%
+\def\onstep[#1]#2{%
     \ifnum #1=\rawcountervalue[currentstepnum] #2\fi%
     \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
     }
 
 % 在预定步骤后排印
-\def\typesetfromstep[#1]#2{%
+\def\fromstep[#1]#2{%
     \ifnum \numexpr\rawcountervalue[currentstepnum]+1\relax>#1 #2\fi%
     \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
     }
@@ -128,36 +165,5 @@ after={\stopmakeup}]
     \setnumber[currentstepnum][1]%
     \disablemode[insteps]%
 }
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% 设置目录、PDF书签、交互、引用
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\setupheadtext[content=目录]
-\setupcombinedlist[content][list={DANYUAN,KEWEN,lanmuN},alternative=c]%
-\setuplist[DANYUAN][style=bold]
-\setuplist[KEWEN][margin=2em]
-% pdf交互/链接
-\setupinteraction[state=start,color=,]
-% pdf书签
-% \setupinteractionscreen[option={bookmark}]
-\setupinteractionscreen[
-    option={doublesided,bookmark},
-    width=max,height=max,% necessary for Trim/BleedBox
-]
-\placebookmarks[DANYUAN,KEWEN,lanmuN,chapter,section,subsection] % 可加入自定义\definelist[mylist]
-% 设置引用
-% \setupreferencing[left=,right=] % 覆盖左右两侧的引号
-% \define[1]\see{\at{}{页}[#1]\about[#1]}% 另见
-
-
-\setupbackgrounds[page][background=color,backgroundcolor=LightChromeGreen]
-    % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
-% \startcolor[OuterSpace]
-% \startcolor[white]
-
-% \setuppagenumber[state=start]
-\setuppagenumbering[location={footer,right}]
-% \setuptolerance[verytolerant,stretch] 
-\setupinteractionscreen[option=max]
 
 \stopenvironment
