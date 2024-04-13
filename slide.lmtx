@@ -20,15 +20,6 @@
 \stopSlide
 
 \slide{%
-\sChapter{我为什么对儿童识字感兴趣？}
-\sItems[fit]{
-    \step[2]{\item 编小学语文教材}
-    \step[3]{\item 教我的女儿读书和识字}
-    \step[4]{\item 业余研究}
-    \step[5]{\item 做家庭教育音频节目}
-}}
-
-\slide{%
 \sChapter{孩子应该多大开始识字？}
 \sItems[16em]{
     \step[2]{\item 等孩子自己想识字的时候}
@@ -37,52 +28,26 @@
 }}
 
 \slide{%
-\sChapter{家长自己教孩子识字？上培训班？还是等上学后老师教？}
-\sItems[20em]{
-    \step[2]{\item 可以上学后再识字，但不能上学后才读书}
-    \step[3]{\item 幼儿园、培训班教识字有违国家教育政策}
-    \step[4]{\item 在陪孩子读书的过程中引导孩子识字}
-}}
-
-\slide{%
-\sChapter{用什么书教孩子识字？}
-\sItems[fit]{
-    \step[2]{\item 孩子的喜欢的书}
-    \step[3]{\item 专门的识字书}
-    \step[4]{\item 哥哥姐姐们的语文教材}
-}}
-
-\slide{%
-\sChapter{可以用识字卡片识字吗？用识字应用识字好不好？}
-\sItems[fit]{
-    \step[2]{\item 识字要避免琐碎分析和“背字典”}
-    \step[3]{\item 在有意义的语境中识字，在读书中识字}
-}}
-
-\slide{%
 \sChapter{卡片一点儿用也没有吗？}
 \sItems[fit]{
-    \step[2]{\item 用来复习}
-    \step[3]{\item 用来游戏}
-    \step[4]{\item 兴趣卡片}
-    \step[5]{\item 用来检验\\（谨慎使用）}
+    \step[2]{\item 用来复习\typesetfromstep [2]{\hbox to 0pt{\itxx 而不是用来学习！}}}
+    \step[3]{\item 用来游戏\typesetinstep   [3]{\hbox to 0pt{\itxx 请尽情发挥你的想象力！}}}
+    \step[4]{\item 兴趣卡片\typesetfromstep[4]{\hbox to 0pt{\itxx 约有三百字适合，多了无用}}}
+    \step[5]{\item 用来检验\typesetinstep   [5]{\hbox to 0pt{\itxx 谨慎使用！}}}
 }}
 
 \slide{%
-\sChapter{怎样在生活中教孩子识字？}
+\sChapter{孩子不爱看书怎么办？{\itxx%
+    \typesetinstep[1]{0}%
+    \typesetinstep[2]{1}%
+    \typesetinstep[3]{2}%
+    \typesetinstep[4]{3}%
+    \typesetinstep[5]{4}}}
 \sItems[fit]{
-    \step[2]{\item 识标牌}
-    \step[3]{\item 做字卡，贴字卡}
-    \step[4]{\item 日用杂字}
-}}
-
-\slide{%
-\sChapter{孩子不爱看书怎么办？}
-\sItems[fit]{
-    \step[2]{\item 买书}
-    \step[3]{\item 带孩子逛书店和图书馆}
-    \step[4]{\item 每天安排睡前亲子阅读时间}
-    \step[5]{\item 卖掉你的电视机}
+    \step[2]{\item 买书}                    
+    \step[3]{\item 带孩子逛书店和图书馆}      
+    \step[4]{\item 每天安排睡前亲子阅读时间}  
+    \step[5]{\item 卖掉你的电视机}           
 }}
 
 \slide{%
@@ -90,11 +55,11 @@
 \sPar[fit]{%
 文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试
 }}
+
 \slide{%
 \sPar[fit]{%
 文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试文本测试
 }}
 
-\slide{谢谢！}
 \slide{谢谢！}
 \stoptext

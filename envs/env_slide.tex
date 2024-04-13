@@ -5,7 +5,7 @@
 % 模式
 % %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% 高亮当前步骤（默认为隐藏后续步骤）
+% 显示所有步骤，高亮当前步骤（默认为显示以前步骤，隐藏后续步骤）
 \definemode[highlightcurrentstep]
 % \enablemode[highlightcurrentstep]
 \disablemode[highlightcurrentstep]
@@ -81,7 +81,7 @@
 \def\sItems[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off]{\startitemize[packed] #2 \stopitemize}}}
 \def\sPar[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off,indenting={}]{#2}}}
 
-% 分步显示（未到达的步骤先占位、隐藏）
+% 分步显示（保持所有元素占位，仅通过显隐或高亮来切换）
 \definecounter[recursenum][way=bytext]
 % \setnumber[recursenum][1]
 \definecounter[currentstepnum][way=bytext]
@@ -93,6 +93,18 @@
     \fi}%
     {\ifnum #1>\rawcountervalue[currentstepnum]\color[transparentColor]{#2} \else #2 \fi}%
     % 
+    \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
+    }
+
+% 仅在预定预定步骤排印
+\def\typesetinstep[#1]#2{%
+    \ifnum #1=\rawcountervalue[currentstepnum] #2\fi%
+    \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
+    }
+
+% 在预定步骤后排印
+\def\typesetfromstep[#1]#2{%
+    \ifnum \numexpr\rawcountervalue[currentstepnum]+1\relax>#1 #2\fi%
     \ifnum #1>\rawcountervalue[recursenum] \setnumber[recursenum][#1] \fi%收集最大步骤
     }
 
