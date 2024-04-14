@@ -2,6 +2,8 @@
 % 字体配置
 \environment[envs/type-imp-student.mkiv]
 \setupbodyfont   [student,tt,16pt]
+% 背景颜色
+% \setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
 
 % 高亮当前步骤（默认为隐藏后续步骤）
 \enablemode[highlightcurrentstep]

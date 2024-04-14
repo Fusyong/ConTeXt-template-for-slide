@@ -26,7 +26,7 @@
 
 % 页面和用纸的尺寸
 \setuppapersize[SW][SW]
-\setuppapersize[S6][S6]
+% \setuppapersize[S6][S6]
 % [S3] [width=300pt,height=225pt]
 % [S4] [width=400pt,height=300pt]
 % [S5] [width=500pt,height=375pt]
@@ -45,10 +45,10 @@
     topspace=0cm,
     height=fit,
         header=0pt,
-        footer=1em,
+        footer=0em,%可用来放页码
     bottomspace=0cm,
     backspace=1.5cm,
-    bottom=12pt,
+    bottom=0pt,
     location=singlesided]
 \setupmakeup[slidepage][doublesided=empty, pagestate=start, align=middle, page={disable,no}]
 
@@ -59,7 +59,7 @@
 % \definecolor[highlightColor][BlueI] % 高亮色（显示当前步骤）
 \definecolor[highlightColor][white] % 高亮色（显示当前步骤）
 
-% 背景颜色
+% 背景颜色 Inchworm SkyBlue
 \setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
     % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
 % \startcolor[OuterSpace]
