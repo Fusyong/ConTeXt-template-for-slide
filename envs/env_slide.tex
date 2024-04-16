@@ -147,8 +147,8 @@
     }
 
 % 幻灯片环境
-\definestartstop[Slide]
-[commands={\switchtobodyfont[24pt]},
+\definestartstop[Slide][%
+% commands={\switchtobodyfont[24pt]},
 before={\startmakeup[slidepage]},
 after={\stopmakeup}]
 \def\slide#1{%
@@ -168,7 +168,7 @@ after={\stopmakeup}]
 }
 
 % 无宽度（不影响对齐）的单行小字注释，适用于行末
-\def\noteonstep[#1]#2{\onstep[#1]{\hbox to 0pt{\itxx #2}}}
-\def\notefromstep[#1]#2{\fromstep[#1]{\hbox to 0pt{\itxx #2}}}
+\def\noteonstep[#1]#2{\onstep[#1]{\hbox to 0pt{\tfxx #2}}}
+\def\notefromstep[#1]#2{\fromstep[#1]{\hbox to 0pt{\tfxx #2}}}
 
 \stopenvironment
