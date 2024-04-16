@@ -60,7 +60,8 @@
 \definecolor[highlightColor][white] % 高亮色（显示当前步骤）
 
 % 背景颜色 Inchworm SkyBlue
-\setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
+\def\bgcolor{SkyBlue}
+\setupbackgrounds[page][background=color,backgroundcolor=\bgcolor]
     % {\setupbackgrounds[page][background=color,backgroundcolor=white]}
 % \startcolor[OuterSpace]
 % \startcolor[white]
@@ -167,8 +168,35 @@ after={\stopmakeup}]
     \disablemode[insteps]%
 }
 
+
 % 无宽度（不影响对齐）的单行小字注释，适用于行末
 \def\noteonstep[#1]#2{\onstep[#1]{\hbox to 0pt{\tfxx #2}}}
 \def\notefromstep[#1]#2{\fromstep[#1]{\hbox to 0pt{\tfxx #2}}}
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 进度条
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\definelayer[mybg]% name of the layer
+    [x=0mm, y=0mm,
+    repeat=yes,
+    width=\paperwidth, height=\paperheight,
+    ]
+\startsetups layer %如此设置才能更新页码
+\setlayer[mybg]
+    [hoffset=0cm, voffset=0cm,background=color,backgroundcolor=\bgcolor]
+    {%
+    \definecollector[mybgcollector]
+    \setcollector [mybgcollector][]
+        {\framed[frame=off, width=\paperwidth, height=\paperheight,background=color,backgroundcolor=\bgcolor]{}}
+    \setcollector [mybgcollector][corner={left,bottom},location={right,top}]%似乎等效：hoffse与x,voffse与y
+        {\startMPcode
+        fill fullsquare xyscaled (PaperWidth,2pt) withcolor \MPcolor{\bgcolor};
+        fill fullsquare xyscaled (1/LastPageNumber*PaperWidth,2pt)
+            shifted (((PageNumber-1+0.5)/LastPageNumber-0.5)*PaperWidth, 0pt) withcolor red;
+        \stopMPcode}
+    \composedcollector{mybgcollector}
+    }
+\stopsetups
+\setupbackgrounds[page][setups=layer, background=mybg]
 
 \stopenvironment
