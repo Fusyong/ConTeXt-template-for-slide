@@ -21,7 +21,8 @@ ConTeXt幻灯片模板
 * [x] 预制样式
   * [x] `\sChapter{content}` 标题
   * [x] `\sTitle{content}` 不编号标题（不列入目录）
-  * [x] `\sItems{content}` 列表
+  * [x] `\sItems{content}` 圆点头列表
+  * [x] `\sItemsA{content}` 大写字母头列表
   * [x] `\sPar{content}` 段落
 * [x] 进度条
 * [ ] 添加手稿模式，可打印成讲义

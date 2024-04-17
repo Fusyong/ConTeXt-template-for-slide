@@ -1,7 +1,7 @@
 \environment[envs/env_slide.tex]
 % 字体配置
 \environment[envs/type-imp-student.mkiv]
-\setupbodyfont   [student,tt,16pt]
+\setupbodyfont   [student,tt,30pt]
 % 背景颜色
 % \setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
 

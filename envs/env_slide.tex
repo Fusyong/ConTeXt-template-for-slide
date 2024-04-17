@@ -117,7 +117,9 @@
 % 设置列表组itemize、所有级别、阿拉伯数字、堆叠、其后不留空
 \setupitemgroup[itemize][each][packed][before={}, after={},]
 % 可控制宽度的列表组
-\def\sItems[#1]#2{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off]{\startitemize[packed] #2 \stopitemize}}}
+\def\SITEMS[#1,#2]#3{\centeraligned{\framedtext[before=,offset=0pt,width=#1,frame=off]{\startitemize[#2,packed] #3 \stopitemize}}}
+\def\sItems[#1]#2{\SITEMS[#1,1]{#2}}%圆点头列表
+\def\sItemsA[#1]#2{\SITEMS[#1,A]{#2}}%大写字母头列表
 \def\sPar[#1]#2{\centeraligned{\framedtext[before=,after=,offset=0pt,width=#1,frame=off,indenting={}]{#2}}}
 
 % 分步显示（保持所有元素占位，仅通过显隐或高亮来切换）
