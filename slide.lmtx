@@ -1,93 +1,111 @@
+% 环境文件（默认设置）
 \environment[envs/env_slide.tex]
+
 % 字体配置
 \environment[envs/type-imp-student.mkiv]
-\setupbodyfont   [student,tt,30pt]
-% 背景颜色
-% \setupbackgrounds[page][background=color,backgroundcolor=Inchworm]
+\setupbodyfont   [student,tt,30pt]%楷体
+% \setupbodyfont   [slide,rm,30pt]%楷体
+% \setupbodyfont   [slide,ss,30pt]%等线
+% \setupbodyfont   [slide,tt,30pt]%细等线
 
-% 高亮当前步骤（默认为隐藏后续步骤）
+% 背景颜色 Inchworm SkyBlue Silver Timberwolf Almond Tan Tumbleweed 
+% 使用颜色集crayola，详见： https://wiki.contextgarden.net/Color
+\def\bgcolor{Tumbleweed}
+
+% 高亮当前步骤（默认为隐藏后续步骤，也可在正文中开、关）
 \enablemode[highlightcurrentstep]
+% 恢复默认模式
 % \disablemode[highlightcurrentstep]
-%
-%
-%
-%
+
+% 图片设置
 % \setupexternalfigures[location=local,directory=.,conversion=pdf] % lowres,prefix=lowres/]
+
+% 调试设置
+% 显示文档框架
 % \showframe  
 \starttext
 
-\startSlide
-\sTitle{儿童识字的 \color[white]{\bfd 25} 个问题}
-{——怎么做才能让孩子\\喜欢识字，喜欢读书}
+% 一组幻灯
+\slide{
+% 不列入目录的标题
+\sTitle{儿童识字的 \color[white]{\bfd 15} 个问题}
+% 一般正文
+——怎么做才能让孩子\\喜欢识字，喜欢读书
 \blank
-{\white\itx 黄复雄 \quad 2024年4月1日 \quad 在愚村}
-\stopSlide
-
-\slide{%
-\sChapter{孩子应该多大开始识字？}
-\sItems[16em]{
-    \step[2]{\item 等孩子自己想识字的时候}
-    \step[3]{\item 孩子想读书的时候才会想识字——识字问题其实是读书问题}
-    \step[4]{\item 家长经常给孩子读书，孩子才会想自己识字，自己读书}
-}}
-
-\slide{%
-\sChapter{卡片一点儿用也没有吗？}
-\sItems[fit]{
-    \step[2]{\item 用来复习\notefromstep [2]{而不是用来学习！}}
-    \step[3]{\item 用来游戏\noteonstep   [3]{请尽情发挥你的想象力！}}
-    \step[4]{\item 兴趣卡片\notefromstep[4]{约有三百字适合，多了无用}}
-    \step[5]{\item 用来检验\noteonstep   [5]{谨慎使用！}}
-}}
-
-\slide{%
-\sChapter{孩子不爱看书怎么办？{\itxx%
-    \onstep[1]{0}%
-    \onstep[2]{1}%
-    \onstep[3]{2}%
-    \onstep[4]{3}%
-    \onstep[5]{4}}}
-\sItems[fit]{
-    \step[2]{\item 买书}                    
-    \step[3]{\item 带孩子逛书店和图书馆}      
-    \step[4]{\item 每天安排睡前亲子阅读时间}  
-    \step[5]{\item 卖掉你的电视机}           
-}}
-
-\slide{%
-\onstep[1]{\sChapter{都有哪些识字方法？哪些方法最好？}}
-\onstep[2]{
-\sPar[fit]{\itx
-01.数码识字；02.汉字桥；\quad03.分散识字；04.集中识字；\\
-05.部件识字；06.听读识字；07.猜认识字；08.循环识字；\\
-09.字谜识字；10.归类识字；11.韵语识字；12.汉标识字；\\
-13.字理识字；14.字根识字；15.联想识字；16.主动识字；\\
-17.基因识字；18.阅读识字；19.解形识字；20.口诀识字；\\
-21.注提识字；22.炳人识字；23.注音识字；24.应用识字；\\
-25.兴趣识字；26.全息识字；27.字频识字；28.环境识字；\\
-29.集优识字；30.识字快车；31.速成识字；32.趣味识字；\\
-33.形象识字；34.零岁识字；35.直映识字；36.定频识字；\\
-37.字经识字；38.双拼识字；}}%
-
-\onstep[3]{
-\sPar[fit]{\itx
-39.中成码识字；40.纵横码识字；41.字族文识字；\\
-42.全语文识字；43.庞光辉识字；44.字拼法识字；\\
-45.中国成语识字；46.部首归类识字；47.发现探索识字；\\
-48.诱思探究识字；49.形义分析识字；50.奇特联想识字；\\
-51.成群分级识字；52.传统诵记识字；53.中文字母识字；\\
-54.拼字玩具识字；55.综合高效识字；56.民族双拼识字；\\
-57.大成序化识字；58.TPP全身活动识字；\\
-59.汉字信息综合识字；60.聪明娃娃金钥匙识字；\\
-61.幼儿渗透性趣味识字}}%
-
-\fromstep[2]{
-\sPar[fit]{\itx
-
-\hfill ——据中国识字教育网}}%
+{\white\itx 黄复雄 \quad 2024年4月1日}
 }
 
+\slide{%
+% 不预先占位的步骤，指定步骤
+\onstep[1]{
+    % 列入目录的标题，在预定的步骤中
+    \sChapter{为什么说陪伴孩子读书是最好的识字方法？}}
+\onstep[2]{
+    % 段落，宽度自适应
+    \sPar[fit]{最高效、常用的是谷锦屏老师倡导的{\em “06.听读识字”}，也就是老师或家长带着孩子读书，孩子“听”熟、“读”熟，在这样的读书过程中自然识字。其余都是辅助方法，偏于技巧和技术，多一个少一个无关紧要。}}%
+\onstep[3]{
+    % 段落，指定宽度
+    \sPar[12em]{伴读{\itx （给孩子读书，陪伴孩子读书）}也是陪伴孩子和培养孩子的最好方式}}%
+% 不预先占位的步骤，指定起始步骤
+\fromstep[2]{\par\hfill\itx 伴读}
+}
+
+\slide{%
+% 标题不在步骤中，即每个步骤都出现
+\sChapter{怎么给孩子读书孩子才会识字？}%
+% 列表，宽度自适应
+\sItems[fit]{
+    % 预先占位的步骤
+    \step[2]{\item 读与讲不同}
+    \step[3]{\item 指读\noteonstep[3]{让孩子意识到字与音的对应关系}}%确定步骤、不计尺寸（不影响对齐）的尾注
+    \step[4]{\item 朗读}
+    \step[5]{\item 咬准字词}
+}}
+
+\slide{
+    % 段落，指定宽度
+    \sPar[12em]{朗读是一种全身心的享受和安慰。朗读技巧需要练习，也值得练习。\noteonstep[2]{南丁格尔例}}
+}
+
+% 切换为默认模式（显示与隐藏模式）
+\disablemode[highlightcurrentstep]
+\slide{%
+\sChapter{怎样在生活中教孩子识字？}
+% 列表，序号为ABC
+\sItemsA[fit]{
+    \step[2]{\item 在街道、市场识标牌}
+    \step[3]{\item 在家做字卡，贴字卡}
+    \step[4]{\item 整理日用杂字}
+}}
+% 切换为高亮模式
+\enablemode[highlightcurrentstep]
+
+\slide{\sPar[fit]{识字教育是传统语文教育的一个重点。在这个方面，前人用的工夫特别大，积累的经验也比较多。很突出的一个作法是在儿童入学前后用比较短的一段时间（一年上下）集中地教儿童认识一批字——两千左右。
+
+\itx\hfill ——张志公《传统语文教育初探》（1962）}}
+
+\slide{\sPar[fit]{古代启蒙集中识字所用的材料，宋代以后主要是“三百千”和各种“杂字”，都是专门为集中识字编写的专用教材。“三百千”指《三字经》《百家姓》《千字文》。还有巩固识字兼韵文启蒙用的《千家诗》（合称“三百千千”）和《唐诗三百首》。
+}}
+
+\slide{\sPar[fit]{%
+人生世间，耕读当先。生意买卖，图赚利钱。\\
+学会写账，再打算盘。天平戥子，纸墨笔砚。\\
+升合石斗，一秤两端。明千明两，不哄不瞒。\\
+冷蒸热卖，现吃现端。
+
+\itx\hfill ——《山西杂字必读》}}
+
+\slide{
+\sTitle{识字要有用\notefromstep[6]{有意义}}%确定起始步骤、不计尺寸（不影响对齐）的尾注
+\sItems[fit]{
+    \step[2]{\item 读书\notefromstep[2]{识字问题就是读书问题}}
+    \step[3]{\item 生活\notefromstep[3]{识字有用}}
+    \step[4]{\item 游戏\notefromstep[4]{游戏就是孩子的生活本身}}
+}}
+
+% bug 如果出现页码，可以多复制几行
 \slide{谢谢！}
 \slide{谢谢！}
 \slide{谢谢！}
+
 \stoptext
